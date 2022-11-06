@@ -10,6 +10,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <header class="header">
   <h1><img src="imagens/Logo-1.png" /></h1>
 </header>
@@ -25,8 +26,9 @@
       <li><button class="btn btn-ordenacao" href="#" id="btnOrdenarPorPreco">ORDENAR POR PREÇO</button></li>
     </ul>
   </nav>
-
-  <section class="livros wrap" id="livros"> 
+  
+  <section class="livros wrap" id="livros">
+    <!-- aqui o visual da página está estático, isso porque todas as informações de livros está aqui direto no html, e no mundo real não funciona assim, geralmente buscamos esses dados de um banco de dados ou de uma outra aplicação ou API, e esse é o motivo que estou comentando todas essas linhas que mostra os livros -->
     <!-- <div class="livro">
       <img class="livro__imagens" src="imagens/Cangaceiro-Javascript.png" alt="Capa do livro Cangaceiro JavaScript" />
       <h2 class="livro__titulo">
@@ -259,7 +261,6 @@
         <span class="tag">Back-end</span>
       </div>
     </div> -->
-
   </section>
   <section id="valor_total_livros_disponiveis">
     <div class="livros__disponiveis">
@@ -272,6 +273,8 @@
   </footer>
 
   <script src="/app/main.js"></script>
+  <script src="/app/metodoForEach.js"></script>
+  <script src="/app/metodoMap.js"></script>
 </body>
 
 </html>

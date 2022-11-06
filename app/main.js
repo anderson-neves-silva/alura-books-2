@@ -1,35 +1,12 @@
 let livros = [];
 const endpointDaAPI = 'https://guilhermeonrails.github.io/casadocodigo/livros.json';
-// chamando a função
-getBuscarLivrosDaAPI();
-// capturando o elemento para inserir os livros
-const elementoParaInserirLivros = document.getElementById('livros');
+getBuscarLivrosDaAPI();  // chamando a função
+const elementoParaInserirLivros = document.getElementById('livros');  // capturando o elemento para inserir os livros
 
-// fazendo a requisição e buscando os livro, função assícrona, o await significa espere por uma promessa
-async function getBuscarLivrosDaAPI() {
+async function getBuscarLivrosDaAPI() {  // fazendo a requisição e buscando os livro, função assícrona, o await significa espere por uma promessa
     const res = await fetch(endpointDaAPI);
     livros = await res.json();
-    // console.log(livros);
-    // mostrando de uma forma que parece com uma tabela ao invés de exibir como console log
-    console.table(livros);
-    // chamando a função passando livros
-    exibirOsLivrosNaTela(livros);
-}
-
-function exibirOsLivrosNaTela(listaDeLivros) {
-    listaDeLivros.forEach(livro => {
-        elementoParaInserirLivros.innerHTML += `
-        <div class="livro">
-        <img class="livro__imagens" src="${livro.imagem}" alt=${livro.alt}" />
-        <h2 class="livro__titulo">
-          ${livro.titulo}
-        </h2>
-        <p class="livro__descricao">${livro.autor}</p>
-        <p class="livro__preco" id="preco">R$${livro.preco}</p>
-        <div class="tags">
-          <span class="tag">${livro.categoria}</span>
-        </div>
-      </div>
-        `
-    });    
+    console.table(livros);  // mostrando de uma forma que parece com uma tabela ao invés de exibir como console log
+    let livrosComDesconto = aplicarDesconto(livros);  // aplicar desconto nos livros e será retornando objeto
+    exibirOsLivrosNaTela(livrosComDesconto);  // chamando a função passando livros 
 }
