@@ -6,7 +6,7 @@ const elementoParaInserirLivros = document.getElementById('livros');  // captura
 async function getBuscarLivrosDaAPI() {  // função assícrona por isso definimos como async, fazendo a requisição e buscando os livros, o await significa espere por uma promessa.
     const res = await fetch(endpointDaAPI);  //  realizando a requisição e atribuindo em res.
     livros = await res.json();  // atribuindo a livros a resposta da requisição transformada em json.
-    console.table(livros);  // mostrando de uma forma que parece com uma tabela ao invés de exibir como console log.
+    // console.table(livros);  // mostrando de uma forma que parece com uma tabela ao invés de exibir como console log.
     let livrosComDesconto = aplicarDesconto(livros);  // aplicar desconto nos livros e será retornando objeto.
     exibirOsLivrosNaTela(livrosComDesconto);  // chamando a função e passando livros já com desconto.
 }
