@@ -1,7 +1,6 @@
 let livros = [];
 const endpointDaAPI = 'https://guilhermeonrails.github.io/casadocodigo/livros.json';
 getBuscarLivrosDaAPI();  // chamada que faz a requisição e busca os livros da API.
-const elementoParaInserirLivros = document.getElementById('livros');  // capturando o elemento para inserir os livros.
 
 async function getBuscarLivrosDaAPI() {  // função assícrona por isso definimos como async, fazendo a requisição e buscando os livros, o await significa espere por uma promessa.
     const res = await fetch(endpointDaAPI);  //  realizando a requisição e atribuindo em res.
