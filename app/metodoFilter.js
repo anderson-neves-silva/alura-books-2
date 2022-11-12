@@ -2,8 +2,29 @@ const botoes = document.querySelectorAll('.btn');  // pegando todos os botões d
 botoes.forEach(btn => btn.addEventListener('click', filtrarLivros));  // significa que cada botão eu quero realizar uma ação que é chamar a função filtrarLivros.
 
 function filtrarLivros() {
-    const elementoBtn = document.getElementById(this.id);  // qual o botão está sendo clicado.
-    const categoria = elementoBtn.value;
-    let livrosFiltrados = categoria == 'disponivel' ? livros.filter(livro => livro.quantidade > 0) : livros.filter(livro => livro.categoria == categoria);  // operador ternário para mostrar os livros disponível, se a categoria for igual a disponível fazer um filtro dos livros que tenha a quantidade for maior que “ 0 “, se não “ : “ fazer o filtro normal da categoria.
-    exibirOsLivrosNaTela(livrosFiltrados);  // como já temos a função que exibe os livros na tela, eu apenas chamo ela aqui, note que os livros estão se repetindo na tela após clicar novamente no mesmo botão, então o que preciso é apenas ir na função exibirLivrosNaTela e fazer uma chamada de innerHTML passando vazio no início dela.
+  const elementoBtn = document.getElementById(this.id);  // qual o botão está sendo clicado.
+  const categoria = elementoBtn.value;
+  let livrosFiltrados = categoria == 'disponivel' ?  // se categoria for disponivel, faz o filtro por disponibilidade, se não faz o filtro por categoria passando a categoria que temos com parâmetro. 
+  filtrarPorDisponibilidade() : filtrarPorCategoria(categoria);   
+  exibirOsLivrosNaTela(livrosFiltrados);  // como já temos a função que exibe os livros na tela, eu apenas chamo ela aqui, note que os livros estão se repetindo na tela após clicar novamente no mesmo botão, então o que preciso é apenas ir na função exibirLivrosNaTela e fazer uma chamada de innerHTML passando vazio no início dela.
+
+  if (categoria == 'disponivel') {
+    exibirTotalDosLivrosDisponivelNaTela();
+  }
+}
+
+function filtrarPorCategoria(categoria) {
+  return livros.filter(livro => livro.categoria == categoria);
+}
+
+function filtrarPorDisponibilidade() {
+  return livros.filter(livro => livro.quantidade > 0);
+}
+
+function exibirTotalDosLivrosDisponivelNaTela() {
+  elementoComValorTotalDeLivrosDisponiveis.innerHTML = `
+    <div class="livros__disponiveis">
+      <p>Todos os livros disponíveis por R$ <span id="valor">299,00</span></p>
+    </div>
+  `
 }

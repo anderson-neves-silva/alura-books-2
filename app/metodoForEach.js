@@ -1,6 +1,8 @@
 const elementoParaInserirLivros = document.getElementById('livros');  // capturando o elemento para inserir os livros.
+const elementoComValorTotalDeLivrosDisponiveis = document.getElementById('valor_total_livros_disponiveis');  // capturando o elemento. 
 
 function exibirOsLivrosNaTela(listaDeLivros) {  // função que cria cada livro na tela, ela recebe uma lista de livros no parâmetro, aqui eu uso template string para inserir o os dados vindos da API para ficar de forma dinâmica ${ }.
+  elementoComValorTotalDeLivrosDisponiveis.innerHTML = '';  // quando os livros forem exibidos na tela, não mostrar a mensagem "Todos os livros disponíveis por etc.", não mostra nada.
   elementoParaInserirLivros.innerHTML = '';  // passando vazio aqui para mostrar apenas os livros clicados.
   listaDeLivros.forEach(livro => {
     // let disponibilidade = verificarDisponibilidadeDoLivro(livro);  // função que verifica a disponibilidade do livro, observação: a classe "livro__imagens" passa a ser baseada no valor que tem lá na quantidade da API, se valor for “0 ou menos” muda a visualização do livro.
