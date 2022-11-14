@@ -9,7 +9,8 @@ function filtrarLivros() {
   exibirOsLivrosNaTela(livrosFiltrados);  // como já temos a função que exibe os livros na tela, eu apenas chamo ela aqui, note que os livros estão se repetindo na tela após clicar novamente no mesmo botão, então o que preciso é apenas ir na função exibirLivrosNaTela e fazer uma chamada de innerHTML passando vazio no início dela.
 
   if (categoria == 'disponivel') {
-    exibirTotalDosLivrosDisponivelNaTela();
+    const valorTotal = calcularValorTotalDeLivrosDisponiveis(livrosFiltrados);  // métdodo reduce.
+    exibirTotalDosLivrosDisponivelNaTela(valorTotal);  //  passando o valor da variável que guarda o valor total de livros disponíveis nessa função.
   }
 }
 
@@ -21,10 +22,10 @@ function filtrarPorDisponibilidade() {
   return livros.filter(livro => livro.quantidade > 0);
 }
 
-function exibirTotalDosLivrosDisponivelNaTela() {
+function exibirTotalDosLivrosDisponivelNaTela(valorTotal) {
   elementoComValorTotalDeLivrosDisponiveis.innerHTML = `
     <div class="livros__disponiveis">
-      <p>Todos os livros disponíveis por R$ <span id="valor">299,00</span></p>
+      <p>Todos os livros disponíveis por R$ <span id="valor">${valorTotal}</span></p>
     </div>
   `
 }
